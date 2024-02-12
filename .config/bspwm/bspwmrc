@@ -1,0 +1,52 @@
+#!/usr/bin/sh
+
+xrandr --output HDMI-0 --primary --mode 1920x1080 --rate 144.00
+xrandr --output DP-1 --mode 1920x1080 --rate 60.00 --left-of HDMI-0
+
+# bspc monitor HDMI-0 -n center
+# bspc monitor DP-1 -n left
+bspc monitor DP-1 -d 󰎤 󰎧 󰎪 󰎭 󰎱
+bspc monitor HDMI-0 -d 󰲠 󰲢 󰲤 󰲦 󰲨
+
+bspc config border_width                  2
+bspc config window_gap                    6
+bspc config focused_border_color          "#ca9ee6"
+bspc config normal_border_color           "#ca9ee6"
+
+bspc config split_ratio                   0.50
+bspc config borderless_monocle            false
+bspc config gapless_monocle               false
+bspc config focus_follows_pointer         true
+bspc config ignore_ewmh_focus             false
+#bspc config pointer_follows_focus         false
+bspc config pointer_motion_interval       5
+bspc config pointer_modifier              mod4 
+bspc config pointer_action1               move 
+bspc config pointer_action2               resize_side 
+bspc config pointer_action3               resize_corner
+
+bspc rule -a discord desktop='^1' follow=off focus=off
+bspc rule -a Spotify desktop='^2' follow=off focus=off
+bspc rule -a Brave-browser desktop='^5' follow=on
+bspc rule -a zoom desktop='^10' follow=on state=floating center=true
+
+processes=("picom" "polybar" "flameshot" "sxhkd" "dunst")
+
+for process in "${processes[@]}"; do
+  if pidof -q "$process"; then
+    pkill -9 -x "$process" > /dev/null; sleep 0.1
+  fi
+done
+
+picom &
+~/.fehbg &
+polybar center &
+polybar left &
+dunst &
+xss-lock --transfer-sleep-lock -- i3lock -i /home/garrett/Pictures/Wallpapers/lock.png --nofork &
+xset s dpms 300 300 &
+fcitx5 &
+flameshot &
+sxhkd &
+
+xsetroot -cursor_name left_ptr

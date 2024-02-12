@@ -1,0 +1,61 @@
+[global]
+frame_color = "#ca9ee6"
+separator_color= frame
+
+[urgency_low]
+background = "#303446"
+foreground = "#C6D0F5"
+
+[urgency_normal]
+background = "#303446"
+foreground = "#C6D0F5"
+
+[urgency_critical]
+background = "#303446"
+foreground = "#C6D0F5"
+frame_color = "#EF9F76"
+
+[global]
+font = FiraCode Nerd Font Mono 
+markup = full
+format = "<b>%s</b>\n%b"
+width = (300, 600)
+offset = 12x48 # margin of 60 from the right
+shrink = no
+separator_height = 5
+padding = 12
+horizontal_padding = 8
+frame_width = 2
+scale = 1
+transparency = 5
+sort = yes
+indicate_hidden = yes
+alignment = left
+bounce_freq = 0
+show_age_threshold = 60
+word_wrap = yes
+ignore_newline = no
+stack_duplicates = true
+hide_duplicate_count = false
+show_indicators = yes
+icon_position = right
+max_icon_size = 48
+icon_path = /usr/share/icons/Papirus-Dark/48x48/apps:/usr/share/icons/Papirus-Dark/48x48/categories:/usr/share/icons/Papirus-Dark/48x48/devices:/usr/share/icons/Papirus-Dark/48x48/emblems:/usr/share/icons/Papirus-Dark/48x48/mimetypes:/usr/share/icons/Papirus-Dark/48x48/places:/usr/share/icons/Papirus-Dark/48x48/status
+sticky_history = yes
+history_length = 20
+dmenu = rofi -dmenu -p dunst
+browser = brave
+always_run_script = true
+title = Dunst
+class = Dunst
+mouse_left_click = do_action
+corner_radius = 10
+
+[experimental]
+per_monitor_dpi = true
+
+[Spotify]
+appname = Spotify
+new_icon = Spotify
+timeout = 3
+
